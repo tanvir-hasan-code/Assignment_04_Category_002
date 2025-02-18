@@ -1,11 +1,41 @@
+// Extra solution
 
-function calculateVAT(price) {
+function calculateSleepTime(times) {
+	if (times.every(time => typeof time === "number")) {
+		let totalTime = 0;
+		for (const time of times) {
+			totalTime += time;
+		}
+		const hour = Math.floor(totalTime / 3600);
+		const minute = Math.floor((totalTime % 3600) / 60);
+		const second = totalTime % 60;
+		return { hour, minute, second };
+	}
+	else {
+		return "Invalid";
+	}
+}
+
+const time = [100, 3800, 90 ];
+const times = calculateSleepTime(time);
+console.log(times);
+
+
+// Problem-01 
+
+function calculateVAT( price ) {
 	if (typeof price !== "number" || price === isNaN || price < 0) {
 		return "Invalid";
 	}
 	const result = price * 7.5 / 100;
 	return result;
 }
+
+const price = calculateVAT(1000);
+console.log(price);
+
+
+// Problem-02
 
 function validContact(contact) {
 	if (typeof contact === "string") {
@@ -20,6 +50,13 @@ function validContact(contact) {
 		return "Invalid";
 	}
 }
+
+const contact = validContact("01796255213");
+console.log(contact)
+
+
+
+// Problem-03
 
 function  willSuccess( marks ) {
 	if (Array.isArray(marks)) {
@@ -42,6 +79,13 @@ function  willSuccess( marks ) {
 	}
 }
 
+const marks = [60, 70, 80, 40, 30];
+const exam = willSuccess(marks);
+console.log(exam);
+
+
+// Problem-04 
+
 function  validProposal( person1 , person2 ) {
 	if (typeof person1 === "object" && typeof person2 === "object") {
 		if (person1.gender === person2.gender) {
@@ -62,6 +106,15 @@ function  validProposal( person1 , person2 ) {
 	}
 }
 
+
+const person1 = { name: "Rahul", gender: "female", age: 14 };
+const person2 = { name: "Joya", gender: "male", age: 21 };
+
+const result = validProposal(person1, person2);
+console.log(result);
+
+// Problem-05 
+
 function  calculateSleepTime( times ) {
 	if (times.every(time => typeof time === "number")) {
 		let totalTime = 0;
@@ -70,10 +123,14 @@ function  calculateSleepTime( times ) {
 		}
 		const hour = parseInt(totalTime / 3600);
 		const minute = parseInt((totalTime % 3600) / 60);
-		const second = totalTime % 60;
+		const second = parseInt(totalTime % 60);
 		return { hour, minute, second };
 	}
 	else {
 		return "Invalid";
 	}
 }
+
+const countTime = [100, 3800, 90];
+const totalSleep = calculateSleepTime(countTime)
+console.log(totalSleep)
