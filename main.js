@@ -1,10 +1,11 @@
 
-function calculateVAT(price) {
-	if (typeof price !== "number" || price === isNaN || price < 0) {
+function calculateVAT(num){
+	if (typeof num === 'number' && num > 0) {
+        return num*7.5/100;
+    }
+    else{
 		return "Invalid";
-	}
-	const result = price * 7.5 / 100;
-	return result;
+    }
 }
 
 function validContact(contact) {
@@ -21,28 +22,29 @@ function validContact(contact) {
 	}
 }
 
-function  willSuccess( marks ) {
-	if (Array.isArray(marks)) {
+function willSuccess(arr){
+    if(Array.isArray(arr)){
 		let pass = 0;
-		let fail = 0;
-		for (const mark of marks) {
-			if (typeof mark !== isNaN) {
-				if (mark >= 50) {
+		let fail = 0; 
+        for(const num of arr){
+			if (typeof num === 'number') {
+                if(num>=50){
 					pass++;
-				}
-				else {
+                }else{
 					fail++;
-				}
-			}
-		}
-		return fail < pass;
-	}
-	else {
-		return "Invalid";
-	}
+                }
+            }else{
+				return 'Invalid';
+            }
+        }
+        return pass > fail;
+    }
+    else{
+		return 'Invalid';
+    }
 }
 
-function  validProposal( person1 , person2 ) {
+function  validProposal( person1, person2 ) {
 	if (typeof person1 === "object" && typeof person2 === "object") {
 		if (person1.gender === person2.gender) {
 			return false;
